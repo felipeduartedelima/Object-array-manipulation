@@ -10,11 +10,12 @@ function filterDESC(a,b, attributeToSort){
   return 0;
 }
 
-function separateItems(items, attribute, value, order = '', attributeToSort){
+function itemSeparatorAndFilter(items, attribute, value, order = '', attributeToSort){
+  if(order === 'ASC') arr.sort((a,b)=>filterASC(a,b, attributeToSort))
+  if(order === 'DESC') arr.sort((a,b)=>filterDESC(a,b, attributeToSort))
+
   const filtered = items.filter((item) => {if(item[attribute] === value) return true})
   const rest = items.filter((item) => {if(item[attribute] !== value) return true})
 
-  if(order === '') return {filtered,rest}
-  if(order === 'ASC') return {filtered: filtered.sort((a,b)=>filterASC(a,b, attributeToSort)),rest: rest.sort((a,b)=>filterASC(a,b, attributeToSort))}
-  if(order === 'DESC') return {filtered: filtered.sort((a,b)=>filterDESC(a,b, attributeToSort)),rest: rest.sort(filterDESC(a,b, attributeToSort))}
+  return {filtered,rest}
 }
