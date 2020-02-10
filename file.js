@@ -20,8 +20,8 @@ const itemsSeparatorAndSort = (items, attribute = '', operator = 'eq', value='',
   
     if(sort !== '') items = itemsSorting(items,attributeToSort, sort)
 
-    const separated = items.filter(item => operators[operator](item[attribute], value))
-    const remains = items.filter(item => separated.indexOf(item) === -1)
+    let separated = items.filter(item => operators[operator](item[attribute], value))
+    let remains = items.filter(item => separated.indexOf(item) === -1)
     return {separated,remains}
 }
 
