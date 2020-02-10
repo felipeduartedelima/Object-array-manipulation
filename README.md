@@ -118,22 +118,12 @@ const ar = [
 ]
 
 console.log('1: ', itemsSeparatorAndSort(ar, 'numberToOrder', 'eq', 2, 'numberToOrder', 'ASC'))
-console.log('1: ', itemsSeparatorAndSort(ar, 'numberToOrder', 'lt', 3, 'numberToOrder', 'ASC'))
+console.log('2: ', itemsSeparatorAndSort(ar, 'numberToOrder', 'lt', 3, 'numberToOrder', 'DESC'))
 ```
 returns:
 
 ```js
     1: {
-            separated:[
-                {letter: "b", numberToOrder: 2},
-                {letter: "a", numberToOrder: 1}
-            ],
-            remains:[
-                {letter: "a", numberToOrder: 4},
-                {letter: "b", numberToOrder: 3}
-            ]
-        }
-    2: {
             separated:[
                 {letter: "b", numberToOrder: 2}
             ],
@@ -141,6 +131,16 @@ returns:
                 {letter: "a", numberToOrder: 1},
                 {letter: "b", numberToOrder: 3},
                 {letter: "a", numberToOrder: 4}
+            ]
+        }
+    2: {
+            separated:[
+                {letter: "b", numberToOrder: 2},
+                {letter: "a", numberToOrder: 1}
+            ],
+            remains:[
+                {letter: "a", numberToOrder: 4},
+                {letter: "b", numberToOrder: 3}
             ]
         }
 ```
