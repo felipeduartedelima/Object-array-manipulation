@@ -8,8 +8,8 @@ three functions will be made available for use, see how to use them
 ### itemsSorting
 
 the `itemsSorting` is a function that orders objects, that receives the `parameters`:
-  - `items`: (mandatory) array, for the array you want to manipulate
-  - `attributeToSort`: (mandatory) attribute that will be used for sort
+  - `items`: (required) array, for the array you want to manipulate
+  - `attributeToSort`: (required) attribute that will be used for sort
   - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
 
 examples
@@ -42,8 +42,8 @@ returns:
 ### itemsGroupBy
 
 the `itemsGroupBy` is a function that group objects, that receives the `parameters`:
-  - `items`: (mandatory) array, for the array you want to manipulate
-  - `attributeToGroup`: (mandatory) attribute that will be used for group items
+  - `items`: (required) array, for the array you want to manipulate
+  - `attributeToGroup`: (required) attribute that will be used for group items
   - `attributeToSort`: (optional) attribute that will be used for sort
   - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
   
@@ -90,11 +90,11 @@ returns:
 ### itemsSeparatorAndSort
 
 the `itemsSeparatorAndSort` is a function that separates objects, that receives the `parameters`:
-  - `items`: (mandatory) array, for the array you want to manipulate
-  - `attribute`: (mandatory) attibute that will be used to verification
+  - `items`: (required) array, for the array you want to manipulate
+  - `attribute`: (required) attibute that will be used to verification
   - `operator`: (optional) default `eq` view option in table below
-  - `value`: (mandatory) value to comparate
-  - `attributeToSort`: (mandatory) attribute that will be used for sort
+  - `value`: (required) value to comparate
+  - `attributeToSort`: (required) attribute that will be used for sort
   - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
 
 | attribute | Operator | Description |
