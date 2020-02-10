@@ -33,9 +33,9 @@ returns:
       {letter: 'b',numberToOrder: 3}
     ]
     DESC: [
-      {letter: 'a',numberToOrder: 1},
+      {letter: 'b',numberToOrder: 3},
       {letter: 'b',numberToOrder: 2},
-      {letter: 'b',numberToOrder: 3}
+      {letter: 'a',numberToOrder: 1}
     ]
 ```
 
