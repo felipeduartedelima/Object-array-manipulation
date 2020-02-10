@@ -58,7 +58,7 @@ const ar = [
 ]
 
 console.log('1: ', itemsGroupBy(ar, 'letter'))
-console.log('1: ', itemsGroupBy(ar, 'letter', 'numberToOrder', 'DESC'))
+console.log('2: ', itemsGroupBy(ar, 'letter', 'numberToOrder', 'DESC'))
 
 ```
 returns:
@@ -67,21 +67,21 @@ returns:
     1: {
         a:[
             { letter: "a", numberToOrder: 1},
-            { letter: "a", numberToOrder: 2}
+            { letter: "a", numberToOrder: 4}
         ],
         b:[
-            {letter: "b", numberToOrder: 3},
-            {letter: "b", numberToOrder: 4}
+            {letter: "b", numberToOrder: 2},
+            {letter: "b", numberToOrder: 3}
         ]
     }
     2: {
         a:[
-            { letter: "a", numberToOrder: 2},
+            { letter: "a", numberToOrder: 4},
             { letter: "a", numberToOrder: 1}
         ],
         b:[
-            {letter: "b", numberToOrder: 4},
-            {letter: "b", numberToOrder: 3}
+            {letter: "b", numberToOrder: 3},
+            {letter: "b", numberToOrder: 2}
         ]
     }
 ```
