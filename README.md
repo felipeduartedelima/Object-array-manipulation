@@ -46,7 +46,7 @@ the `itemsGroupBy` is a function that group objects, that receives the `paramete
   - `attributeToGroup`: (mandatory) attribute that will be used for group items
   - `attributeToSort`: (optional) attribute that will be used for sort
   - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
-  - 
+  
   examples
 
 ```js
