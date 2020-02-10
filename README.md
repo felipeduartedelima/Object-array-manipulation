@@ -1,82 +1,150 @@
-# itemSeparatorAndFilter
-A function to separate and filter object vectors
+# Object array manipulation
+With these functions you will be able to manipulate array of objects in an easier way.
 
-# How to use
+## How to use
 
-## Only filter
+three functions will be made available for use, see how to use them
 
-```
-  const arr = [
-    {id: 1, name: 'Felipe', filter: 'a'},
-    {id: 3, name: 'Davi', filter: 'b'},
-    {id: 2, name: 'Thiago', filter: 'a'},
-  ]
+### itemsSorting
 
-  itemSeparatorAndFilter(arr, 'filter', 'b')
-  
-  //
-  return 
-  {
-    filtered: [
-      {id: 3, name: 'Davi', filter: 'b'}
-     ],
-     rest: [
-      {id: 1, name: 'Felipe', filter: 'a'},
-      {id: 2, name: 'Thiago', filter: 'a'}
-     ]
-  
-  }
+the `itemsSorting` is a function that orders objects, that receives the `parameters`:
+  - `items`: (mandatory) array, for the array you want to manipulate
+  - `attributeToSort`: (mandatory) attribute that will be used for sort
+  - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
 
-```
+examples
+```js
+const ar = [
+  {letter: 'a',numberToOrder: 1},
+  {letter: 'b',numberToOrder: 3},
+  {letter: 'b',numberToOrder: 2}
+]
 
-## Filter and Order by ASC
+console.log('ASC: ', itemSorting(ar, 'numberToOrder', 'ASC'))
+console.log('DESC: ', itemSorting(ar, 'numberToOrder', 'DESC'))
+``` 
 
-```
-  const arr = [
-    {id: 1, name: 'Felipe', filter: 'a'},
-    {id: 3, name: 'Davi', filter: 'b'},
-    {id: 2, name: 'Thiago', filter: 'a'},
-  ]
+returns:
 
-  itemSeparatorAndFilter(arr, 'filter', 'b', 'ASC', 'id')
-  
-  //
-  return 
-  {
-    filtered: [
-      {id: 3, name: 'Davi', filter: 'b'}
-     ],
-     rest: [
-      {id: 1, name: 'Felipe', filter: 'a'},
-      {id: 2, name: 'Thiago', filter: 'a'}
-     ]
-  
-  }
-
+```js
+    ASC: [
+      {letter: 'a',numberToOrder: 1},
+      {letter: 'b',numberToOrder: 2},
+      {letter: 'b',numberToOrder: 3}
+    ]
+    DESC: [
+      {letter: 'a',numberToOrder: 1},
+      {letter: 'b',numberToOrder: 2},
+      {letter: 'b',numberToOrder: 3}
+    ]
 ```
 
-## Filter and Order by DESC
+### itemsGroupBy
+
+the `itemsGroupBy` is a function that group objects, that receives the `parameters`:
+  - `items`: (mandatory) array, for the array you want to manipulate
+  - `attributeToGroup`: (mandatory) attribute that will be used for group items
+  - `attributeToSort`: (optional) attribute that will be used for sort
+  - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
+  - 
+  examples
+
+```js
+const ar = [
+  {letter: 'a', numberToOrder: 1},
+  {letter: 'b', numberToOrder: 2},
+  {letter: 'b', numberToOrder: 3},
+  {letter: 'a', numberToOrder: 4}
+]
+
+console.log('1: ', itemsGroupBy(ar, 'letter'))
+console.log('1: ', itemsGroupBy(ar, 'letter', 'numberToOrder', 'DESC'))
 
 ```
-  const arr = [
-    {id: 1, name: 'Felipe', filter: 'a'},
-    {id: 3, name: 'Davi', filter: 'b'},
-    {id: 2, name: 'Thiago', filter: 'a'},
-  ]
+returns:
 
-  itemSeparatorAndFilter(arr, 'filter', 'b', 'DESC', 'id')
-  
-  //
-  return 
-  {
-    filtered: [
-      {id: 3, name: 'Davi', filter: 'b'}
-     ],
-     rest: [
-      {id: 2, name: 'Thiago', filter: 'a'},
-      {id: 1, name: 'Felipe', filter: 'a'}
-     ]
-  
-  }
-
+```js
+    1: {
+        a:[
+            { letter: "a", numberToOrder: 1},
+            { letter: "a", numberToOrder: 2}
+        ],
+        b:[
+            {letter: "b", numberToOrder: 3},
+            {letter: "b", numberToOrder: 4}
+        ]
+    }
+    2: {
+        a:[
+            { letter: "a", numberToOrder: 2},
+            { letter: "a", numberToOrder: 1}
+        ],
+        b:[
+            {letter: "b", numberToOrder: 4},
+            {letter: "b", numberToOrder: 3}
+        ]
+    }
 ```
+
+
+### itemsSeparatorAndSort
+
+the `itemsSeparatorAndSort` is a function that separates objects, that receives the `parameters`:
+  - `items`: (mandatory) array, for the array you want to manipulate
+  - `attribute`: (mandatory) attibute that will be used to verification
+  - `operator`: (optional) default `eq` view option in table below
+  - `value`: (mandatory) value to comparate
+  - `attributeToSort`: (mandatory) attribute that will be used for sort
+  - `sort`: (optional) 'ASC' or 'DESC', choice ordenation
+
+| attribute | Operator | Description |
+| ------ | ------ | ------ |
+| eq | === | equals
+| neq | !== | not equals
+| lt | < | less then
+| lteq | <= | less then or equals
+| gt | > | bigger then
+| gteq | >= | bigger then or equals
+| cont | indexOf | in text 
+
+examples
+
+```js
+const ar = [
+  {letter: 'a', numberToOrder: 1},
+  {letter: 'b', numberToOrder: 2},
+  {letter: 'b', numberToOrder: 3},
+  {letter: 'a', numberToOrder: 4}
+]
+
+console.log('1: ', itemsSeparatorAndSort(ar, 'numberToOrder', 'eq', 2, 'numberToOrder', 'ASC'))
+console.log('1: ', itemsSeparatorAndSort(ar, 'numberToOrder', 'lt', 3, 'numberToOrder', 'ASC'))
+```
+returns:
+
+```js
+    1: {
+            separated:[
+                {letter: "b", numberToOrder: 2},
+                {letter: "a", numberToOrder: 1}
+            ],
+            remains:[
+                {letter: "a", numberToOrder: 4},
+                {letter: "b", numberToOrder: 3}
+            ]
+        }
+    2: {
+            separated:[
+                {letter: "b", numberToOrder: 2}
+            ],
+            remains:[
+                {letter: "a", numberToOrder: 1},
+                {letter: "b", numberToOrder: 3},
+                {letter: "a", numberToOrder: 4}
+            ]
+        }
+```
+
+
+
+**Felipe Duarte de Lima, 02/2020! :)**
