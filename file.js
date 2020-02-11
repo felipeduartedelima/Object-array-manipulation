@@ -1,4 +1,4 @@
-const itemsSorting = (items, attributeToSort, sort = 'ASC')=>{
+export const itemsSorting = (items, attributeToSort, sort = 'ASC')=>{
   let sortings = {
     'ASC': (a, b, attributeToSort)=>a[attributeToSort] > b[attributeToSort] ? 1 : -1,
     'DESC': (a, b, attributeToSort)=>a[attributeToSort] < b[attributeToSort] ? 1 : -1
@@ -6,7 +6,7 @@ const itemsSorting = (items, attributeToSort, sort = 'ASC')=>{
   return items.sort((a, b)=>sortings[sort](a,b, attributeToSort))
 }
 
-const itemsSeparatorAndSort = (items, attribute = '', operator = 'eq', value='', attributeToSort = '', sort = '') => {
+export const itemsSeparatorAndSort = (items, attribute = '', operator = 'eq', value='', attributeToSort = '', sort = '') => {
 
     let operators = {
       'eq': (a,b)=>a===b,
@@ -26,7 +26,7 @@ const itemsSeparatorAndSort = (items, attribute = '', operator = 'eq', value='',
 }
 
 
-const itemsGroupBy = (items, attributeToGroup = '', attributeToSort = '', sort = '') => {
+export const itemsGroupBy = (items, attributeToGroup = '', attributeToSort = '', sort = '') => {
 
    if(sort !== '') items = itemsSorting(items,attributeToSort, sort)
 
@@ -34,10 +34,4 @@ const itemsGroupBy = (items, attributeToGroup = '', attributeToSort = '', sort =
     (a[b[attributeToGroup]] = a[b[attributeToGroup]] || []).push(b)
     return a
   }, {})
-}
-
-export default {
-  itemsSeparatorAndSort,
-  itemsSorting,
-  itemsGroupBy
 }
